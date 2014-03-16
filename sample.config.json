@@ -1,0 +1,5 @@
+{
+	"token":"freshbooks_token_here",
+	"subdomain":"your_freshbooks_username.freshbooks.com",
+	"oauth_consumer_secret":""
+}
