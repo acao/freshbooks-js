@@ -1,0 +1,27 @@
+{
+  "name": "freshbooks-js",
+  "author": {
+    "name": "Gregory Tomlinson",
+    "email": "gregory.tomlinson@gmail.com"
+  },
+  "version": "0.0.1",
+  "description": "JavaScript/NodeJS wrapper for Freshbooks XML API",
+  "main": "freshbooks.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gregory80/freshbooks-js.git"
+  },
+  "devDependencies": {
+    "expect.js": "*",
+    "mocha": "*"
+  },
+  "bin": {
+    "freshbooksjs": "./cli.js"
+  },
+  "keywords": [
+  ],
+  "license": "MIT"
+}
