@@ -74,6 +74,9 @@ Uses Mocha for testing via npm. To run test:
 
 ## TODO
 
+1. passing basic auth, oauth token etc is too tedious per method. allow me to create an instance
+1. deprecate Object.assign in favor of deepcopy node.extend port, or consider lodash
+1. consider using lodash
 1. normalize response from lists / model items 
 1. OAUTH
 1. freshbooks oauth signature is 'PLAINTEXT' but request.oauth uses HMAC. Must extend / code around.
