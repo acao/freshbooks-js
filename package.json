@@ -5,7 +5,7 @@
     "name": "Gregory Tomlinson",
     "email": "gregory.tomlinson@gmail.com"
   },
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Freshbooks for NodeJS ES Harmoney",
   "main": "freshbooks.js",
   "scripts": {
