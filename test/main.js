@@ -69,7 +69,7 @@ describe("Connections to system", function() {
   });
 
   it("should connect to the system endpoint", function*() {
-    console.log("data", data.json);
+    // console.log("data", data.json);
     expect(data.status).to.be("ok");
     expect(data.json.response.system.company_name).to.equal(data1.json.response.system.company_name)
     // console.log("system() %j", data && data.json);
