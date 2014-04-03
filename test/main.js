@@ -57,13 +57,19 @@ describe("Connections to system", function() {
   var data1;
   before(function*() {
 
-    data = yield freshbooks.system.current(null, {basic_auth:true});
+    data = yield freshbooks.system.current(null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
-    data1 = yield freshbooks.api.open("system.current", null, {basic_auth:true});
+    data1 = yield freshbooks.api.open("system.current", null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
   });
 
   it("should connect to the system endpoint", function*() {
-    // console.log("data", data.json);
+    console.log("data", data.json);
     expect(data.status).to.be("ok");
     expect(data.json.response.system.company_name).to.equal(data1.json.response.system.company_name)
     // console.log("system() %j", data && data.json);
@@ -82,24 +88,39 @@ describe("Test update expense", function() {
   before(function*(){
     category = yield freshbooks.category.create({
       name:"test update expense, category " + (1000*Math.random())
-    }, {basic_auth:true});    
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });    
     yield freshbooks.expense.create({
       staff_id:1,
       amount:25.55,
       notes:"Test amount",
       category_id:category.get("category_id")
-    }, {basic_auth:true});    
-    expenses = yield freshbooks.expense.list(null, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });    
+    expenses = yield freshbooks.expense.list(null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("expenses %j", expenses.json)
     expense_id = expenses.get("expenses").expense[0].expense_id;
     // console.log("expense_id", expense_id)
     var data1 = yield freshbooks.expense.get({
       expense_id:expense_id
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     data2 = yield freshbooks.expense.update({
       expense_id:expense_id,
       notes:data1.json.response.note + "This is an updated value"
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("Results", data1.json, data2.json);
       
   });
@@ -125,7 +146,10 @@ describe("Connections to expenses", function() {
 
     category = yield freshbooks.category.create({
       name:"test category " + (1000*Math.random())
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("category.json", category.json)
     
     // need to get a staff id
@@ -134,21 +158,36 @@ describe("Connections to expenses", function() {
       amount:25.55,
       notes:"Test amount",
       category_id:category.get("category_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("expense.json", expense.json);
     expense_get = yield freshbooks.expense.get({
       expense_id:expense.get("expense_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
-    expense_list = yield freshbooks.expense.list(null, {basic_auth:true});
+    expense_list = yield freshbooks.expense.list(null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     expense_update = yield freshbooks.expense.update({
       expense_id:expense.get("expense_id"),
       notes:"This is an updated amout"
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
     expense_delete = yield freshbooks.expense.delete({
       expense_id:expense.get("expense_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
   });
 
@@ -188,30 +227,51 @@ describe("During a connection to the estimate endpoint", function() {
 
     client = yield freshbooks.client.create({
       email:"username@example.com"
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("client", client.json.response, client.get("client_id"));
     estimate = yield freshbooks.estimate.create({
       client_id:client.get("client_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
     // console.log("estimate", estimate.json, estimate.status)
     estimate_get = yield freshbooks.estimate.get({
       estimate_id:estimate.get("estimate_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
-    estimate_list = yield freshbooks.estimate.list(null, {basic_auth:true});
+    estimate_list = yield freshbooks.estimate.list(null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
     send_email = yield freshbooks.estimate.sendByEmail({
       estimate_id:estimate.get("estimate_id")
       // email:"gregory.tomlinson@gmail.com"
-    }, {basic_auth:true})
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    })
 
     estimate_delete = yield freshbooks.estimate.delete({
       estimate_id:estimate.get("estimate_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
     client_delete = yield freshbooks.client.delete({
       client_id:client.get("client_id")
-    }, {basic_auth:true});
+    }, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
 
   });
 
@@ -257,7 +317,10 @@ describe("Connection to the payment gateway", function() {
   var data;
   
   before(function*() {
-    data = yield freshbooks.gateway.list(null, {basic_auth:true});
+    data = yield freshbooks.gateway.list(null, {
+      basic_auth:true,
+      subdomain:freshbooks.config.subdomain
+    });
   });
 
   it("should connect to the gateway endpoint", function*() {
