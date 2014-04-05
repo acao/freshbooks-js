@@ -74,10 +74,11 @@ Uses Mocha for testing via npm. To run test:
 
 ## TODO
 
+1. fix tests around subdomain => oauth_consumer_key
 1. the 'optional' items like oauth and subdomain arent optional, fix code to reflect this
     maybe freshbooks should be a function() that returns an instance, killing off config.update
     it should move the managing of credentials into the parent application where they originate
-    
+
 1. passing basic auth, oauth token etc is too tedious per method. allow me to create an instance
 1. deprecate Object.assign in favor of deepcopy node.extend port, or consider lodash
 1. consider using lodash
@@ -93,6 +94,18 @@ Uses Mocha for testing via npm. To run test:
 
 
 
+## Always arrays
+
+Need these to always be arrays, something that isn't consistent w/ the current XML
+parsing setup
+
++ project.list
+    tasks.task
+    staff.staff (use staff_members?)
+    contractors.contractor
+
++ staff.list
+    projects.project
 
 ### Getting Started, Development
 
