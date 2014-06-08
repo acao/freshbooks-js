@@ -82,7 +82,7 @@ Uses Mocha for testing via npm. To run test:
 1. passing basic auth, oauth token etc is too tedious per method. allow me to create an instance
 1. deprecate Object.assign in favor of deepcopy node.extend port, or consider lodash
 1. consider using lodash
-1. normalize response from lists / model items
+1. ~~normalize response from lists / model items~~
 1. OAUTH
 1. freshbooks oauth signature is 'PLAINTEXT' but request.oauth uses HMAC. Must extend / code around.
 1. ~~support pagination~~
@@ -90,20 +90,8 @@ Uses Mocha for testing via npm. To run test:
 1. submit to freshbooks (support@freshbooks.com)
 1. consolidate xml2json and js2xmlparser for xml i/o
 1. refactor test/main.js
-1. fix staff_memebers/members as non conforming to plural_noun.noun .list format
+1. ~~fix staff_memebers/members as non conforming to plural_noun.noun .list format~~
 
-
-
-## Always arrays
-
-Need these to always be arrays, something that isn't consistent w/ the current XML parsing setup
-
-+ project.list
-+ tasks.task
-+ staff.staff (use staff_members?)
-+ contractors.contractor
-+ staff.list
-+ projects.project
 
 ### Getting Started, Development
 
