@@ -9,7 +9,7 @@
   "description": "Freshbooks for NodeJS ES Harmoney",
   "main": "freshbooks.js",
   "scripts": {
-    "test": "mocha --timeout 15000 --harmony-proxies --harmony-generators --harmony test"
+    "test": "mocha --timeout 15000 --harmony-proxies --harmony-generators --reporter=list --harmony test"
   },
   "repository": {
     "type": "git",
