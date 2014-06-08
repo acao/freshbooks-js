@@ -93,6 +93,23 @@ co(function*() {
 
 You can find additional examples in the [Mocha tests](https://github.com/gregory80/freshbooks-js/blob/master/test/main.js)
 
+## Pagination Support
+
+This module transparently provides support for pagination when using `list` methods.  All you need to do is pass the pagination parameters in the request body as freshbooks expects.
+
+For Example:
+
+```javascript
+yield freshbooks.project.list({page:2,per_page:42},{basic_auth:true})
+```
+Would yield the 2nd page of results at 42 results per page.
+
+The page, total number of pages, and total number of items should be available in the response json.
+
+While more could be done to make the pagination metadata more accessible, and to provide helper functions (or examples) for easing up the process of paging, you can already do everything you need to get started.
+
+Read more in the [Freshbooks Pagination Docs](http://developers.freshbooks.com/pagination/)
+
 
 ## Freshbooks.Model
 

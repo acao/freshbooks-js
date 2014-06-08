@@ -24,22 +24,22 @@ In progress, basic connections and test coverage.
 
 ## Usage
 
-A simple example that appends a string to an existing 
+A simple example that appends a string to an existing
 expense note.
 
 
 1. Setup the subdomain and token and connection endpoint
-
+```javascript
         freshbooks.config.update({
             subdomain:"your_username.freshbooks.com",
             token:""
         });
-
+```
 1. Fetch an expense by ID and modify the notes field.
-
+```javascript
         co(function* () {
             var expenses = yield freshbooks.expense.list(null,{basic_auth:true});
-            var expense_id = expenses.get("expenses").expense[0].expense_id; 
+            var expense_id = expenses.get("expenses").expense[0].expense_id;
             var data1 = yield freshbooks.expense.get({
               expense_id:expense_id
             },{basic_auth:true});
@@ -49,16 +49,16 @@ expense note.
             },{basic_auth:true});
             console.log("Results", data1.json, data2.json);
         })();
+```
+## Documentation
 
-## Documentation 
-
-http://gregory80.viewdocs.io/freshbooks-js    
+http://gregory80.viewdocs.io/freshbooks-js
 
 
 ## Testing
 
 You will need to [signup for freshbooks](https://gregorytomlinson.freshbooks.com/refer/www), it's free,
-in order to properly test the API. 
+in order to properly test the API.
 
 
 
@@ -69,7 +69,7 @@ Uses Mocha for testing via npm. To run test:
 
 ## Project Goals
 
-1. Leverage ES Harmony specific updates 
+1. Leverage ES Harmony specific updates
 
 
 ## TODO
@@ -82,10 +82,10 @@ Uses Mocha for testing via npm. To run test:
 1. passing basic auth, oauth token etc is too tedious per method. allow me to create an instance
 1. deprecate Object.assign in favor of deepcopy node.extend port, or consider lodash
 1. consider using lodash
-1. normalize response from lists / model items 
+1. normalize response from lists / model items
 1. OAUTH
 1. freshbooks oauth signature is 'PLAINTEXT' but request.oauth uses HMAC. Must extend / code around.
-1. support pagination
+1. ~~support pagination~~
 1. submit (?) to https://github.com/visionmedia/co/wiki
 1. submit to freshbooks (support@freshbooks.com)
 1. consolidate xml2json and js2xmlparser for xml i/o
@@ -96,16 +96,14 @@ Uses Mocha for testing via npm. To run test:
 
 ## Always arrays
 
-Need these to always be arrays, something that isn't consistent w/ the current XML
-parsing setup
+Need these to always be arrays, something that isn't consistent w/ the current XML parsing setup
 
 + project.list
-    tasks.task
-    staff.staff (use staff_members?)
-    contractors.contractor
-
++ tasks.task
++ staff.staff (use staff_members?)
++ contractors.contractor
 + staff.list
-    projects.project
++ projects.project
 
 ### Getting Started, Development
 
@@ -118,13 +116,13 @@ parsing setup
 1. Create .config.json
 
     In the root directory of the project
-    add the file ```.config.json``` and set your 
+    add the file ```.config.json``` and set your
     Freshbooks subdomain and token. See sample.config.json
 
     https://YOUR_COMPANY_NAME.freshbooks.com/apiEnable
 
 1. Syntax Highlighting for ECMAScript 6
-    
+
     https://github.com/Benvie/JavaScriptNext.tmLanguage
 
 ## Support Indicators, ES Harmony
@@ -155,7 +153,7 @@ parsing setup
 
 
 
-## License 
+## License
 
 (The MIT License)
 
